@@ -41,24 +41,23 @@ export class PromotionProvider {
   }
 
   getPromotions(): Observable<Promotion[]> {
-    return this.http.get<Promotion[]>(baseURL + 'promotiones')
+    return this.http.get<Promotion[]>(baseURL + 'promotions')
       .pipe(
         catchError(this.handleError)
       );
   }
 
   getPromotion(id: number): Observable<Promotion> {
-    return  this.http.get<Promotion>(baseURL + 'promotiones/' + id);
+    return  this.http.get<Promotion>(baseURL + 'promotions/' + id);
   }
 
   getFeaturedPromotion(): Observable<Promotion> {
-    return this.http.get<Promotion>(baseURL + 'promotiones?featured=true')
-      .map(res => res[0]);
+    return this.http.get<Promotion>(baseURL + 'promotions?featured=true');
   }
 
   getPromotionIds(): Observable<number[]> {
     return this.getPromotions()
-      .map(promotiones => { return promotiones.map(promotion => promotion.id); });
+      .map(promotions => { return promotions.map(promotion => promotion.id); });
   }
 
 }

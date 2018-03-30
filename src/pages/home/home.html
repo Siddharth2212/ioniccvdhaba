@@ -8,11 +8,58 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-card *ngIf="dish">
+    <img src="{{baseUrl+dish?.image}}"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{dish?.name}}
+      </ion-card-title>
+      <p>
+        {{dish?.description}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <div [hidden]="dish || dishErrMess">
+    <ion-spinner></ion-spinner>
+    <h4>Loading . . . Please Wait</h4>
+  </div>
+  <div *ngIf="dishErrMess">
+    <h4>{{dishErrMess.message}}</h4>
+  </div>
+  <ion-card *ngIf="promotion">
+    <img src="{{baseUrl+promotion?.image}}"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{promotion?.name}}
+      </ion-card-title>
+      <p>
+        {{promotion?.description}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <div [hidden]="promotion || promoErrMess">
+    <ion-spinner></ion-spinner>
+    <h4>Loading . . . Please Wait</h4>
+  </div>
+  <div *ngIf="promoErrMess">
+    <h4>{{promoErrMess.message}}</h4>
+  </div>
+  <ion-card *ngIf="promotion">
+    <img src="{{baseUrl+leader?.image}}"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{leader?.name}}
+      </ion-card-title>
+      <p>
+        {{leader?.description}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <div [hidden]="leader || leaderErrMess">
+    <ion-spinner></ion-spinner>
+    <h4>Loading . . . Please Wait</h4>
+  </div>
+  <div *ngIf="leaderErrMess">
+    <h4>{{leaderErrMess.message}}</h4>
+  </div>
 </ion-content>

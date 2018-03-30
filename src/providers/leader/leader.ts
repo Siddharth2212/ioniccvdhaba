@@ -41,24 +41,23 @@ export class LeaderProvider {
   }
 
   getLeaders(): Observable<Leader[]> {
-    return this.http.get<Leader[]>(baseURL + 'leaderes')
+    return this.http.get<Leader[]>(baseURL + 'leaders')
       .pipe(
         catchError(this.handleError)
       );
   }
 
   getLeader(id: number): Observable<Leader> {
-    return  this.http.get<Leader>(baseURL + 'leaderes/' + id);
+    return  this.http.get<Leader>(baseURL + 'leaders/' + id);
   }
 
   getFeaturedLeader(): Observable<Leader> {
-    return this.http.get<Leader>(baseURL + 'leaderes?featured=true')
-      .map(res => res[0]);
+    return this.http.get<Leader>(baseURL + 'leaders?featured=true');
   }
 
   getLeaderIds(): Observable<number[]> {
     return this.getLeaders()
-      .map(leaderes => { return leaderes.map(leader => leader.id); });
+      .map(leaders => { return leaders.map(leader => leader.id); });
   }
 
 }

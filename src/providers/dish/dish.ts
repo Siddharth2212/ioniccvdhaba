@@ -52,8 +52,7 @@ export class DishProvider {
   }
 
   getFeaturedDish(): Observable<Dish> {
-    return this.http.get<Dish>(baseURL + 'dishes?featured=true')
-      .map(res => res[0]);
+    return this.http.get<Dish>(baseURL + 'dishes?featured=true');
   }
 
   getDishIds(): Observable<number[]> {
