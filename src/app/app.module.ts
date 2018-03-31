@@ -14,6 +14,7 @@ import { DishProvider } from '../providers/dish/dish';
 import { LeaderProvider } from '../providers/leader/leader';
 import { PromotionProvider } from '../providers/promotion/promotion';
 import {HttpClientModule} from "@angular/common/http";
+import {DishdetailPage} from "../pages/dishdetail/dishdetail";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {HttpClientModule} from "@angular/common/http";
     HomePage,
     AboutPage,
     MenuPage,
-    ContactPage
+    ContactPage,
+    DishdetailPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import {HttpClientModule} from "@angular/common/http";
     HomePage,
     AboutPage,
     MenuPage,
-    ContactPage
+    ContactPage,
+    DishdetailPage
   ],
   providers: [
     StatusBar,
