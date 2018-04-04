@@ -46,7 +46,7 @@ export class FavoritesPage implements OnInit {
 
   deleteFavorite(item: ItemSliding, id: any) {
     let alert = this.alertCtrl.create({
-      title: 'Confirm purchase',
+      title: 'Confirm delete',
       message: 'Do you want to delete this dish?',
       buttons: [
         {
