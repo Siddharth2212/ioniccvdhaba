@@ -10,6 +10,8 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {catchError} from 'rxjs/operators';
 import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
+import {Dish} from "../../shared/dish";
+import {DishProvider} from "../dish/dish";
 
 /*
   Generated class for the LeaderProvider provider.
@@ -19,8 +21,9 @@ import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
 */
 @Injectable()
 export class LeaderProvider {
+  favorites: Array<any> = [1];
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private dishservice: DishProvider) {
     console.log('Hello LeaderProvider Provider');
   }
 
@@ -58,6 +61,36 @@ export class LeaderProvider {
   getLeaderIds(): Observable<number[]> {
     return this.getLeaders()
       .map(leaders => { return leaders.map(leader => leader.id); });
+  }
+
+  /*getFavorites(){
+    return this.favorites;
+  }*/
+
+  getFavorites(): Observable<Dish[]> {
+    return this.dishservice.getDishes()
+      .map(dishes => dishes.filter(dish => this.favorites.some(el => el === dish._id)));
+  }
+
+  addFavorite(id: number): boolean {
+    this.favorites.push(id);
+    return true;
+  }
+
+  isFavorite(id: number): boolean {
+    return this.favorites.indexOf(id) > -1
+  }
+
+  deleteFavorite(id: any): Observable<Dish[]> {
+    let index = this.favorites.indexOf(id);
+    if (index >= 0) {
+      this.favorites.splice(index, 1);
+      return this.getFavorites();
+    }
+    else {
+      console.log('Deleting non-existant favorite', id);
+      // return Observable.throw('Deleting non-existant favorite' + id);
+    }
   }
 
 }

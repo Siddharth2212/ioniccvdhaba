@@ -15,6 +15,9 @@ import { LeaderProvider } from '../providers/leader/leader';
 import { PromotionProvider } from '../providers/promotion/promotion';
 import {HttpClientModule} from "@angular/common/http";
 import {DishdetailPage} from "../pages/dishdetail/dishdetail";
+import { FavoriteProvider } from '../providers/favorite/favorite';
+import {FavoritesPage} from "../pages/favorites/favorites";
+import {ReservationPage} from "../pages/reservation/reservation";
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import {DishdetailPage} from "../pages/dishdetail/dishdetail";
     AboutPage,
     MenuPage,
     ContactPage,
-    DishdetailPage
+    DishdetailPage,
+    FavoritesPage,
+    ReservationPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,9 @@ import {DishdetailPage} from "../pages/dishdetail/dishdetail";
     AboutPage,
     MenuPage,
     ContactPage,
-    DishdetailPage
+    DishdetailPage,
+    FavoritesPage,
+    ReservationPage
   ],
   providers: [
     StatusBar,
@@ -45,7 +52,8 @@ import {DishdetailPage} from "../pages/dishdetail/dishdetail";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DishProvider,
     LeaderProvider,
-    PromotionProvider
+    PromotionProvider,
+    FavoriteProvider
   ]
 })
 export class AppModule {}

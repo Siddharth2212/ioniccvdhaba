@@ -57,7 +57,7 @@ export class DishProvider {
 
   getDishIds(): Observable<number[]> {
     return this.getDishes()
-      .map(dishes => { return dishes.map(dish => dish.id); });
+      .map(dishes => { return dishes.map(dish => dish._id); });
   }
 
 }
