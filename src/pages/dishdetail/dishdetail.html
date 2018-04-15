@@ -55,6 +55,9 @@
     </ion-item>
   </ion-list>
 
+  <button ion-button block (click)="openActionSheet()">
+    Show Action Sheet
+  </button>
   <ion-fab bottom right [hidden]="favorite">
     <button ion-fab (click)="addToFavorites()">
       <ion-icon name="heart-outline"></ion-icon>

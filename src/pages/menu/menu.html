@@ -18,14 +18,21 @@
 
 <ion-content>
   <ion-content class="card-background-page">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 col-lg-4 *ngFor="let dish of dishes">
+          <ion-card (click)="dishSelected($event, dish)" >
+            <img src="{{baseUrl+dish?.image}}"/>
+            <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(0, 0, 0);">
+            </div>
+            <div class="card-title">{{dish?.name | uppercase}}</div>
+            <div class="card-subtitle">{{dish?.description | slice:0:50}}...</div>
+          </ion-card>
+        </ion-col>
 
-    <ion-card (click)="dishSelected($event, dish)" *ngFor="let dish of dishes">
-      <img src="{{baseUrl+dish?.image}}"/>
-      <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(0, 0, 0);">
-      </div>
-      <div class="card-title">{{dish?.name | uppercase}}</div>
-      <div class="card-subtitle">{{dish?.description | slice:0:50}}...</div>
-    </ion-card>
+      </ion-row>
+    </ion-grid>
+
 
   </ion-content>
 </ion-content>

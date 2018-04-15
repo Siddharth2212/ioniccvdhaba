@@ -1,11 +1,15 @@
 import { Component, Inject } from '@angular/core';
-import {IonicPage, LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
+import {
+  ActionSheetController, IonicPage, LoadingController, ModalController, NavController, NavParams,
+  ToastController
+} from 'ionic-angular';
 import { Dish } from '../../shared/dish';
 import { Comment } from '../../shared/comment';
 import {baseURL} from "../../shared/baseurl";
 import {FavoriteProvider} from "../../providers/favorite/favorite";
 import {DishProvider} from "../../providers/dish/dish";
 import {LeaderProvider} from "../../providers/leader/leader";
+import {CommentPage} from "../comment/comment";
 
 /**
  * Generated class for the DishdetailPage page.
@@ -30,7 +34,9 @@ export class DishdetailPage {
               public navParams: NavParams,
               private favoriteService: LeaderProvider,
               public toastCtrl: ToastController,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              public modalCtrl: ModalController,
+              public actionSheetCtrl: ActionSheetController) {
     this.dish = navParams.get('dish');
     this.numcomments = this.dish.comments.length;
     let total = 0;
@@ -66,5 +72,38 @@ export class DishdetailPage {
       position: 'middle'
     });
     toast.present();
+  }
+
+  openActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Select Actions',
+      buttons: [
+        {
+          text: 'Add to Favorites',
+          handler: () => {
+            this.addToFavorites();
+          }
+        },
+        {
+          text: 'Add Comment',
+          handler: () => {
+            let modal = this.modalCtrl.create(CommentPage);
+            /*modal.onDidDismiss(comment => {
+              this.dish.comments.push(comment);
+            });*/
+            modal.present();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
   }
 }
