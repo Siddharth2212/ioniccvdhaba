@@ -1,15 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Leader} from '../../shared/leader';
-
-import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/observable/of';
-import {baseURL} from '../../shared/baseurl';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import {catchError} from 'rxjs/operators';
-import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
 
 /*
   Generated class for the LeaderProvider provider.

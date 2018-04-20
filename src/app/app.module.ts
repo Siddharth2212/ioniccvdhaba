@@ -20,6 +20,7 @@ import {FavoritesPage} from "../pages/favorites/favorites";
 import {ReservationPage} from "../pages/reservation/reservation";
 import {CommentPage} from "../pages/comment/comment";
 import {LoginPage} from "../pages/login/login";
+import {IonicStorageModule} from "@ionic/storage";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {LoginPage} from "../pages/login/login";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

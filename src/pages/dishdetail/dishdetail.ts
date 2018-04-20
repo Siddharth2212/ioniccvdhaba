@@ -1,15 +1,14 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   ActionSheetController, IonicPage, LoadingController, ModalController, NavController, NavParams,
   ToastController
 } from 'ionic-angular';
 import { Dish } from '../../shared/dish';
-import { Comment } from '../../shared/comment';
 import {baseURL} from "../../shared/baseurl";
-import {FavoriteProvider} from "../../providers/favorite/favorite";
-import {DishProvider} from "../../providers/dish/dish";
 import {LeaderProvider} from "../../providers/leader/leader";
 import {CommentPage} from "../comment/comment";
+import { Storage } from '@ionic/storage';
+
 
 /**
  * Generated class for the DishdetailPage page.
@@ -36,7 +35,8 @@ export class DishdetailPage {
               public toastCtrl: ToastController,
               public loadingCtrl: LoadingController,
               public modalCtrl: ModalController,
-              public actionSheetCtrl: ActionSheetController) {
+              public actionSheetCtrl: ActionSheetController,
+              public storage: Storage) {
     this.dish = navParams.get('dish');
     this.numcomments = this.dish.comments.length;
     let total = 0;
@@ -55,6 +55,11 @@ export class DishdetailPage {
     console.log('Adding to Favorites', this.dish._id);
     this.favorite = this.favoriteService.addFavorite(this.dish._id);
     if(this.favorite){
+      var dishes_favorites = this.storage.get('favorites2');
+
+      console.log('_____________');
+      console.log(dishes_favorites['zone_symbol_value']);
+      console.log('_____________');
       this.presentToast(this.dish._id);
       loading.dismiss();
     }
