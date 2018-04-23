@@ -21,6 +21,11 @@ import {ReservationPage} from "../pages/reservation/reservation";
 import {CommentPage} from "../pages/comment/comment";
 import {LoginPage} from "../pages/login/login";
 import {IonicStorageModule} from "@ionic/storage";
+import {LocalNotifications} from "@ionic-native/local-notifications";
+import {EmailComposer} from "@ionic-native/email-composer";
+import {SocialSharing} from "@ionic-native/social-sharing";
+import {Camera} from "@ionic-native/camera";
+import {RegisterPage} from "../pages/register/register";
 
 @NgModule({
   declarations: [
@@ -33,7 +38,8 @@ import {IonicStorageModule} from "@ionic/storage";
     FavoritesPage,
     ReservationPage,
     CommentPage,
-    LoginPage
+    LoginPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,8 @@ import {IonicStorageModule} from "@ionic/storage";
     FavoritesPage,
     ReservationPage,
     CommentPage,
-    LoginPage
+    LoginPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
@@ -61,7 +68,11 @@ import {IonicStorageModule} from "@ionic/storage";
     DishProvider,
     LeaderProvider,
     PromotionProvider,
-    FavoriteProvider
+    FavoriteProvider,
+    LocalNotifications,
+    EmailComposer,
+    SocialSharing,
+    Camera
   ]
 })
 export class AppModule {}

@@ -7,6 +7,7 @@ import { PromotionProvider } from '../../providers/promotion/promotion';
 import { Leader } from '../../shared/leader';
 import { LeaderProvider } from '../../providers/leader/leader';
 import {baseURL} from "../../shared/baseurl";
+import {SocialSharing} from "@ionic-native/social-sharing";
 
 @Component({
   selector: 'page-home',
@@ -25,7 +26,8 @@ export class HomePage implements OnInit {
   constructor(public navCtrl: NavController,
               private dishservice: DishProvider,
               private promotionservice: PromotionProvider,
-              private leaderservice: LeaderProvider) { }
+              private leaderservice: LeaderProvider,
+              private socialSharing: SocialSharing) { }
 
   ngOnInit() {
     this.dishservice.getFeaturedDish()
@@ -45,6 +47,12 @@ export class HomePage implements OnInit {
       .subscribe(leader => this.leader = leader,
         errmess => this.leaderErrMess = <any>errmess );
 
+  }
+
+  shareOnFb(){
+    this.socialSharing.shareViaFacebook(this.dish.name + ' -- ' + this.dish.description, this.baseUrl + this.dish.image, '')
+      .then(() => console.log('Posted successfully to Facebook'))
+      .catch(() => console.log('Failed to post to Facebook'));
   }
 
 }

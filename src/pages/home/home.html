@@ -79,8 +79,11 @@
       <button ion-fab class="btn-google-plus"><ion-icon name="logo-googleplus"></ion-icon></button>
       <button ion-fab class="btn-youtube"><ion-icon name="logo-youtube"></ion-icon></button>
       <button ion-fab class="btn-twitter"><ion-icon name="logo-twitter"></ion-icon></button>
-      <button ion-fab class="btn-facebook"><ion-icon name="logo-facebook"></ion-icon></button>
+      <button (click)="shareOnFb()" ion-fab class="btn-facebook"><ion-icon name="logo-facebook"></ion-icon></button>
       <button ion-fab class="btn-linkedin"><ion-icon name="logo-linkedin"></ion-icon></button>
     </ion-fab-list>
   </ion-fab>
+  <button ion-button icon-left clear small (click)="sendEmail()">
+    Send Email
+  </button>
 </ion-content>

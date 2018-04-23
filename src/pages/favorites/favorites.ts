@@ -6,6 +6,7 @@ import {
 import {Dish} from "../../shared/dish";
 import {LeaderProvider} from "../../providers/leader/leader";
 import {baseURL} from "../../shared/baseurl";
+import {LocalNotifications} from "@ionic-native/local-notifications";
 /**
  * Generated class for the FavoritesPage page.
  *
@@ -28,7 +29,8 @@ export class FavoritesPage implements OnInit {
               private favoriteservice: LeaderProvider,
               public toastCtrl: ToastController,
               public loadingCtrl: LoadingController,
-              private alertCtrl: AlertController) {
+              private alertCtrl: AlertController,
+              public localNotifications: LocalNotifications) {
   }
 
   ngOnInit() {

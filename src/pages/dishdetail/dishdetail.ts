@@ -8,6 +8,7 @@ import {baseURL} from "../../shared/baseurl";
 import {LeaderProvider} from "../../providers/leader/leader";
 import {CommentPage} from "../comment/comment";
 import { Storage } from '@ionic/storage';
+import {LocalNotifications} from "@ionic-native/local-notifications";
 
 
 /**
@@ -36,7 +37,8 @@ export class DishdetailPage {
               public loadingCtrl: LoadingController,
               public modalCtrl: ModalController,
               public actionSheetCtrl: ActionSheetController,
-              public storage: Storage) {
+              public storage: Storage,
+              public localNotifications: LocalNotifications) {
     this.dish = navParams.get('dish');
     this.numcomments = this.dish.comments.length;
     let total = 0;
@@ -77,6 +79,15 @@ export class DishdetailPage {
       position: 'middle'
     });
     toast.present();
+    // Schedule a single notification
+    // Schedule delayed notification
+    this.localNotifications.schedule({
+      text: 'Dish '+id+' added to favorites',
+      trigger: {at: new Date(new Date().getTime() + 3600)},
+      led: 'FF0000',
+      sound: null
+    });
+    //alert('hello');
   }
 
   openActionSheet() {
